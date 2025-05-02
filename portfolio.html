@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atharva Berde - AI Engineer & Software Developer</title>
+  <!-- Embedded CSS -->
+  <style>
+    /* Base Styles */
+    :root {
+      --primary: hsl(220, 70%, 50%);
+      --primary-hover: hsl(220, 70%, 45%);
+      --secondary: hsl(210, 20%, 95%);
+      --secondary-hover: hsl(210, 20%, 90%);
+      --background: #ffffff;
+      --foreground: hsl(222, 47%, 11%);
+      --muted: hsl(215, 16%, 47%);
+      --muted-foreground: hsl(215, 16%, 56%);
+      --border: hsl(214, 32%, 91%);
+      --radius: 0.5rem;
+      --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--foreground);
+      line-height: 1.5;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .text-primary {
+      color: var(--primary);
+    }
+
+    .text-muted {
+      color: var(--muted-foreground);
+    }
+
+    .text-lg {
+      font-size: 1.125rem;
+    }
+
+    .mb-4 {
+      margin-bottom: 1rem;
+    }
+
+    .mt-8 {
+      margin-top: 2rem;
+    }
+
+    .icon {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    .icon-sm {
+      width: 1rem;
+      height: 1rem;
+      margin-right: 0.5rem;
+    }
+
+    /* Header */
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--border);
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(4px);
+    }
+
+    .header-container {
+      display: flex;
+      height: 4rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .desktop-nav {
+      display: none;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .desktop-nav {
+        display: flex;
+      }
+    }
+
+    .nav-link {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--foreground);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius);
+      font-weight: 500;
+      font-size: 0.875rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      border: none;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--foreground);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--secondary);
+    }
+
+    .btn-sm {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.75rem;
+    }
+
+    .btn-full {
+      width: 100%;
+    }
+
+    .btn-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 9999px;
+      color: var(--foreground);
+      background-color: transparent;
+      transition: background-color 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-icon:hover {
+      background-color: var(--secondary);
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 6rem 0 8rem;
+    }
+
+    .hero-content {
+      max-width: 48rem;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--muted-foreground);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-description {
+      color: var(--muted-foreground);
+      margin-bottom: 1.5rem;
+      font-size: 1.125rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero-title {
+        font-size: 3.75rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.875rem;
+      }
+    }
+
+    /* Sections */
+    .section {
+      padding: 4rem 0;
+    }
+
+    .section-alt {
+      padding: 4rem 0;
+      background-color: hsl(210, 20%, 98%);
+    }
+
+    .section-title {
+      font-size: 1.875rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    /* About Section */
+    .about-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+    }
+
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .skills-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .skill-card {
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background-color: white;
+      transition: box-shadow 0.2s;
+      padding: 1rem;
+    }
+
+    .skill-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background-color: white;
+      height: 100%;
+      transition: box-shadow 0.2s;
+    }
+
+    .project-card:hover {
+      box-shadow: var(--shadow-lg);
+    }
+
+    .project-image-container {
+      position: relative;
+      height: 12rem;
+      width: 100%;
+    }
+
+    .project-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-content {
+      flex-grow: 1;
+      padding: 1.5rem;
+    }
+
+    .project-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-description {
+      color: var(--muted-foreground);
+      margin-bottom: 1rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 9999px;
+      background-color: var(--secondary);
+      color: var(--foreground);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.625rem;
+    }
+
+    .project-footer {
+      padding: 1.5rem;
+      padding-top: 0;
+      display: flex;
+      gap: 1rem;
+    }
+
+    /* Contact Section */
+    .contact-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+      }
+    }
+
+    .contact-subtitle {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hover-primary:hover {
+      color: var(--primary);
+    }
+
+    /* Card */
+    .card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background-color: white;
+    }
+
+    .card-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
+
+    /* Form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .form-label {
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .form-input,
+    .form-textarea {
+      display: flex;
+      width: 100%;
+      min-height: 2.5rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background-color: var(--background);
+      padding: 0.5rem 0.75rem;
+      font-size: 0.875rem;
+    }
+
+    .form-textarea {
+      min-height: 5rem;
+      resize: vertical;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    }
+
+    .form-success {
+      background-color: #ecfdf5;
+      color: #047857;
+      padding: 1rem;
+      border-radius: var(--radius);
+      text-align: center;
+    }
+
+    .success-title {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      background-color: hsl(210, 20%, 98%);
+    }
+
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    /* Progress Bar for Skills */
+    .progress-container {
+      height: 0.5rem;
+      background-color: var(--secondary);
+      border-radius: 9999px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background-color: var(--primary);
+      border-radius: 9999px;
+      transition: transform 1s ease-out;
+      transform: translateX(-100%);
+    }
+
+    .progress-value {
+      font-size: 0.75rem;
+      text-align: right;
+      margin-top: 0.25rem;
+      color: var(--muted-foreground);
+    }
+
+    /* Animation for sections */
+    .animate-fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Loading spinner animation */
+    .animate-spin {
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <!-- Lucide Icons CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-icons@latest/dist/umd/lucide.min.css">
+</head>
+<body>
+  <div class="min-h-screen bg-white">
+    <!-- Navigation -->
+    <header class="sticky-header">
+      <div class="container header-container">
+        <div class="font-bold text-xl">Atharva Berde</div>
+        <nav class="desktop-nav">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+        <button class="btn btn-primary">
+          <i data-lucide="mail" class="icon-sm"></i>
+          Contact Me
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="container hero-section">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            Hi, I'm <span class="text-primary">Atharva Berde</span>
+          </h1>
+          <h2 class="hero-subtitle">
+            AI Engineer & Software Developer
+          </h2>
+          <p class="hero-description">
+            I build intelligent, user-focused applications by combining artificial intelligence, machine learning, and
+            modern software engineering. Passionate about solving real-world problems with scalable, data-driven
+            solutions.
+          </p>
+          <div class="button-group">
+            <a href="#contact" class="btn btn-primary">Let's Talk</a>
+            <a href="#projects" class="btn btn-outline">View My Work</a>
+          </div>
+          <div class="social-links">
+            <a href="https://github.com/atharvaberde2" target="_blank" rel="noopener noreferrer" class="btn-icon">
+              <i data-lucide="github" class="icon"></i>
+              <span class="sr-only">GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/atharva-berde-24756b1ba/" target="_blank" rel="noopener noreferrer" class="btn-icon">
+              <i data-lucide="linkedin" class="icon"></i>
+              <span class="sr-only">LinkedIn</span>
+            </a>
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="section-alt">
+        <div class="container">
+          <h2 class="section-title">About Me</h2>
+          <div class="about-grid">
+            <div>
+              <p class="text-lg mb-4">
+                Hello! I'm a passionate AI Engineer and Software Developer with a strong focus on creating
+                intelligent, user-focused applications. With experience in both AI/ML and software engineering, I've
+                developed a deep understanding of how to combine these disciplines effectively.
+              </p>
+              <p class="text-lg mb-4">
+                My journey into AI began at my first hackathon—the UC Berkeley AI Hackathon—where I discovered my passion for building intelligent systems. That experience sparked a deep interest in artificial intelligence, leading me to develop a wide range of projects, from predictive analytics tools to computer vision systems and natural language processing applications. Each project has strengthened my commitment to turning data into meaningful, impactful solutions.
+              </p>
+              <p class="text-lg">
+                When I'm not coding, you can find me participating in hackathons, building side projects, or exploring new machine learning tools and techniques. I'm always eager to learn, collaborate, and grow as an AI practitioner and developer
+              </p>
+            </div>
+            <div class="card">
+              <img src="focused-office-work.png" alt="About Me" class="card-image">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills" class="section">
+        <div class="container">
+          <h2 class="section-title">My Skills</h2>
+          <div class="skills-grid">
+            <div class="skill-card" data-skill="Machine Learning" data-level="90"></div>
+<div class="skill-card" data-skill="Python" data-level="90"></div>
+<div class="skill-card" data-skill="TensorFlow/PyTorch" data-level="85"></div>
+<div class="skill-card" data-skill="Natural Language Processing" data-level="85"></div>
+<div class="skill-card" data-skill="Computer Vision" data-level="80"></div>
+<div class="skill-card" data-skill="SQL" data-level="80"></div>
+<div class="skill-card" data-skill="Data Visualization (Tableau/Matplotlib/Seaborn)" data-level="80"></div>
+<div class="skill-card" data-skill="Data Engineering (Pandas/NumPy)" data-level="80"></div>
+<div class="skill-card" data-skill="Cloud (GCP/AWS/Azure)" data-level="75"></div>
+<div class="skill-card" data-skill="Big Data (Spark/Hadoop/Hive)" data-level="70"></div>
+<div class="skill-card" data-skill="Time Series Forecasting" data-level="75"></div>
+<div class="skill-card" data-skill="Statistical Modeling" data-level="80"></div>
+<div class="skill-card" data-skill="Retrieval-Augmented Generation (RAG)" data-level="80"></div>
+<div class="skill-card" data-skill="Speech AI (Text-to-Speech)" data-level="75"></div>
+<div class="skill-card" data-skill="Prompt Engineering" data-level="80"></div>
+<div class="skill-card" data-skill="Audio Classification" data-level="90"></div>
+<div class="skill-card" data-skill="Ridge Regression" data-level="90"></div>
+<div class="skill-card" data-skill="Gradient Boosting" data-level="95"></div>
+
+          </div>
+        </div>
+      </section>
+      
+      <!-- Achievements Section -->
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">Achievements</h2>
+          <div class="card">
+            <div class="card-content">
+              <div class="achievement-title">
+                <div class="achievement-icon">
+                  <i data-lucide="trophy" class="icon"></i>
+                </div>
+                <h3 class="achievement-heading">Hackathon Winner</h3>
+              </div>
+              <p class="text-muted">
+                Best Use of Vectara API at HackDavis 2025, awarded for Dyslearn, an AI reading coach and caregiver assistant for dyslexic children. Our solution integrated Vectara’s RAG API to achieve 99% accurate real-time content retrieval and used Eleven Labs speech technology to deliver dynamic verbal feedback. This project highlighted the transformative potential of AI in accessibility and deepened my commitment to building inclusive, impactful technology.
+
+
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="section-alt">
+        <div class="container">
+          <h2 class="section-title">Featured Projects</h2>
+          <div class="projects-grid">
+            <div class="project-card">
+              <div class="project-image-container">
+                <img src="eduAI.png" alt="eduAI" class="project-image">
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">EduAI</h3>
+                <p class="project-description">
+                  An AI-powered platform designed to make homework help accessible for grade school students by offering clear, step-by-step solutions. Features a user-friendly interface tailored for easy navigation and effective learning across all age groups.
+                </p>
+                <div class="project-tags">
+                  <span class="badge">Gemini</span>
+                  <span class="badge">Python</span>
+                  <span class="badge">HTML</span>
+                  <span class="badge">Flask</span>
+                  <span class="badge">OpenAI</span>
+                  
+                </div>
+              </div>
+              <div class="project-footer">
+                <a href="#" class="btn btn-outline btn-sm">
+                  <i data-lucide="external-link" class="icon-sm"></i>
+                  Demo
+                </a>
+                <a href="https://github.com/atharvaberde2/EduAI" class="btn btn-outline btn-sm">
+                  <i data-lucide="github" class="icon-sm"></i>
+                  Code
+                </a>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-image-container">
+                <img src="Dyslearn.png" alt="Dyslearn" class="project-image">
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Dyslearn</h3>
+                <p class="project-description">
+                  A supportive learning assistant designed to help children with dyslexia overcome challenges in reading and speech. Dyslearn provides quick, accessible guidance tailored to each child’s needs, fostering confidence and progress in a friendly, encouraging environment.
+                </p>
+                <div class="project-tags">
+                  <span class="badge">Gemini</span>
+                  <span class="badge">Vectara</span>
+                  <span class="badge">ElevenLabs</span>
+                  <span class="badge">Python</span>
+                  <span class="badge">Flask</span>
+                </div>
+              </div>
+              <div class="project-footer">
+                <a href="#" class="btn btn-outline btn-sm">
+                  <i data-lucide="external-link" class="icon-sm"></i>
+                  Demo
+                </a>
+                <a href="https://github.com/atharvaberde2/HackDavis" class="btn btn-outline btn-sm">
+                  <i data-lucide="github" class="icon-sm"></i>
+                  Code
+                </a>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-image-container">
+                <img src="Dysarthria.png" alt="Dysarthria Classifier" class="project-image">
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Dysarthria Classifier</h3>
+                <p class="project-description">
+                  A machine learning system that analyzes speech patterns to detect and classify dysarthria, helping in early diagnosis and speech therapy planning for patients with motor speech disorders.
+                </p>
+                <div class="project-tags">
+                  <span class="badge">Speech Recognition</span>
+                  <span class="badge">Tensorflow</span>
+                  <span class="badge">Audio Preprocessing</span>
+                  <span class="badge">Python</span>
+                  <span class="badge">Streamlit</span>
+                </div>
+              </div>
+              <div class="project-footer">
+                <a href="https://dysarthria-speech-classifier-6uifaihar7k6ty7vybkh3z.streamlit.app/" class="btn btn-outline btn-sm">
+                  <i data-lucide="external-link" class="icon-sm"></i>
+                  Demo
+                </a>
+                <a href="#" class="btn btn-outline btn-sm">
+                  <i data-lucide="github" class="icon-sm"></i>
+                  Code
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="section">
+        <div class="container">
+          <h2 class="section-title">Get In Touch</h2>
+          <div class="contact-grid">
+            <div>
+              <h3 class="contact-subtitle">Contact Information</h3>
+              <div class="contact-info">
+                <div class="contact-item">
+                  <i data-lucide="mail" class="icon text-primary"></i>
+                  <span>atharvaberde5@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                  <i data-lucide="linkedin" class="icon text-primary"></i>
+                  <a href="https://www.linkedin.com/in/atharva-berde-24756b1ba/" class="hover-primary" target="_blank" rel="noopener noreferrer">
+                    linkedin.com/in/atharvaberde
+                  </a>
+                </div>
+                <div class="contact-item">
+                  <i data-lucide="github" class="icon text-primary"></i>
+                  <a href="https://github.com/atharvaberde2" class="hover-primary" target="_blank" rel="noopener noreferrer">
+                    github.com/atharvaberde2
+                  </a>
+                </div>
+              </div>
+              <div class="mt-8">
+                <h3 class="contact-subtitle">Let's Connect</h3>
+                <p class="text-muted mb-4">
+                  I'm currently exploring opportunities in AI/ML engineering, software development, consulting, and innovative projects. Whether you have a question about machine learning, need assistance with an AI implementation, or just want to connect—feel free to reach out. I’ll do my best to respond promptly!
+
+                </p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-content">
+                <form id="contact-form" class="contact-form">
+                  <div class="form-group">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" name="name" class="form-input" required placeholder="Your name">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-input" required placeholder="your.email@example.com">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" id="subject" name="subject" class="form-input" required placeholder="What is this regarding?">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" name="message" class="form-textarea" required placeholder="Your message here..." rows="5"></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-full">
+                    <i data-lucide="send" class="icon-sm"></i>
+                    Send Message
+                  </button>
+                </form>
+                <div id="form-success" class="form-success hidden">
+                  <h3 class="success-title">Message Sent!</h3>
+                  <p>Thank you for reaching out. I'll get back to you as soon as possible.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container text-center">
+        <p class="text-muted">© <span id="current-year"></span> Atharva Berde. All rights reserved.</p>
+        <div class="footer-social">
+          
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Lucide Icons Script -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Embedded JavaScript -->
+  <script>
+    // Initialize when DOM is fully loaded
+    document.addEventListener("DOMContentLoaded", () => {
+      // Initialize Lucide icons
+      const lucide = window.lucide;
+      lucide.createIcons();
+
+      // Set current year in footer
+      document.getElementById("current-year").textContent = new Date().getFullYear();
+
+      // Initialize skill cards
+      initSkillCards();
+
+      // Initialize contact form
+      initContactForm();
+
+      // Add scroll animation for sections
+      initScrollAnimation();
+    });
+
+    // Initialize skill cards with progress bars
+    function initSkillCards() {
+      const skillCards = document.querySelectorAll(".skill-card");
+
+      skillCards.forEach((card) => {
+        const skill = card.getAttribute("data-skill");
+        const level = card.getAttribute("data-level");
+
+        // Create skill card content
+        card.innerHTML = `
+          <div class="font-medium mb-2">${skill}</div>
+          <div class="progress-container">
+            <div class="progress-bar" style="transform: translateX(-${100 - level}%)"></div>
+          </div>
+          <div class="progress-value">${level}%</div>
+        `
+      });
+
+      // Animate progress bars when they come into view
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const progressBar = entry.target.querySelector(".progress-bar");
+              const level = entry.target.getAttribute("data-level");
+              progressBar.style.transform = `translateX(-${100 - level}%)`;
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      skillCards.forEach((card) => {
+        observer.observe(card);
+      });
+    }
+
+    // Initialize contact form with submission handling
+    function initContactForm() {
+      const form = document.getElementById("contact-form");
+      const formSuccess = document.getElementById("form-success");
+
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          // Show loading state
+          const submitButton = form.querySelector('button[type="submit"]');
+          const originalButtonContent = submitButton.innerHTML;
+          submitButton.disabled = true;
+          submitButton.innerHTML = `
+            <svg class="animate-spin icon-sm" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Sending...
+          `;
+
+          // Simulate form submission (replace with actual form submission)
+          setTimeout(() => {
+            form.reset();
+            form.classList.add("hidden");
+            formSuccess.classList.remove("hidden");
+
+            // Reset form after 5 seconds
+            setTimeout(() => {
+              form.classList.remove("hidden");
+              formSuccess.classList.add("hidden");
+              submitButton.disabled = false;
+              submitButton.innerHTML = originalButtonContent;
+            }, 5000);
+          }, 1500);
+        });
+      }
+    }
+
+    // Add scroll animation for sections
+    function initScrollAnimation() {
+      const sections = document.querySelectorAll("section");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate-fade-in");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      sections.forEach((section) => {
+        observer.observe(section);
+      });
+    }
+
+    // Add smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute("href");
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80, // Adjust for header height
+            behavior: "smooth",
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
